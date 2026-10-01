@@ -34,5 +34,4 @@ public class WatchlistMemberId implements Serializable {
     public int hashCode() {
         return Objects.hash(watchlistId, userId);
     }
-
 }

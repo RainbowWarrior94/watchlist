@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/watchlist
+    username: postgres
+    password: nasta
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  flyway:
+    enabled: false

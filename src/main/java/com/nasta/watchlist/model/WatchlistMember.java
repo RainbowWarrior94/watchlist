@@ -1,5 +1,6 @@
 package com.nasta.watchlist.model;
 
+import com.nasta.watchlist.model.enums.MemberRole;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -40,5 +41,4 @@ public class WatchlistMember {
         this.user = user;
         this.role = role;
     }
-
 }

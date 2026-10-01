@@ -1,23 +1,28 @@
 package com.nasta.watchlist.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
 
-@Data
 @Entity
 @Table(name = "watchlists")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Watchlist {
+
     @Id
-    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false, length = 100)
     private String name;
 
-    @Column(unique = true, nullable = false)
+    @Column(columnDefinition = "text")
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -26,5 +31,11 @@ public class Watchlist {
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
-    private Instant createdAt = Instant.now();
+    private Instant createdAt;
+
+    public Watchlist(String name, String description, User createdBy) {
+        this.name = name;
+        this.description = description;
+        this.createdBy = createdBy;
+    }
 }
